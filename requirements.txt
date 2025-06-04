@@ -1,0 +1,4 @@
+pandas
+tensorflow
+tensorflow-hub
+py7zr
