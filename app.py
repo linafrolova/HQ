@@ -4,7 +4,6 @@ import streamlit as st
 import tensorflow as tf
 from tensorflow.keras import layers, models
 from PIL import Image
-import kagglehub
 
 # Class names in the same order as training directories
 CLASS_NAMES = [
@@ -21,11 +20,12 @@ CLASS_NAMES = [
 
 @st.cache_resource
 def load_model():
-    # Download feature extractor from KaggleHub
-    path = kagglehub.model_download(
-        "google/inception-v3/tensorFlow2/inaturalist-inception-v3-feature-vector"
+    # Load feature extractor from bundled directory
+    feature_path = os.path.join(
+        os.path.dirname(__file__),
+        "inception-v3-tensorflow2-inaturalist-inception-v3-feature-vector-v2",
     )
-    feature_extractor_model = tf.saved_model.load(path)
+    feature_extractor_model = tf.saved_model.load(feature_path)
 
     class FeatureExtractor(layers.Layer):
         def __init__(self, model):
@@ -62,7 +62,7 @@ model = load_model()
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Uploaded Image", use_column_width=True)
+    st.image(image, caption="Uploaded Image", use_container_width=True)
 
     img_array = preprocess_image(image)
     preds = model.predict(img_array)
