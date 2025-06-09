@@ -8,7 +8,7 @@ a Streamlit app to test the model locally.
 1. Install the required Python packages:
 
    ```bash
-   pip install streamlit tensorflow kagglehub pillow
+   pip install streamlit tensorflow pillow
    ```
 
 2. Start the Streamlit interface:
@@ -17,4 +17,6 @@ a Streamlit app to test the model locally.
    streamlit run app.py
    ```
 
-Upload an image of a plant and the app will display the predicted class.
+Upload an image of a plant and the app will display the predicted class. The
+feature extractor model is bundled in this repository, so no network access is
+required at runtime.
