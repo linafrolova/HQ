@@ -2,3 +2,4 @@
 *.csv filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.psd filter=lfs diff=lfs merge=lfs -text
+C:\\Users\\frolo\\Downloads\\inception-v3-tensorflow2-inaturalist-inception-v3-feature-vector-v2\\* filter=lfs diff=lfs merge=lfs -text
