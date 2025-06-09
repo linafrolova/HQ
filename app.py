@@ -30,10 +30,13 @@ def load_model():
     class FeatureExtractor(layers.Layer):
         def __init__(self, model):
             super().__init__()
-            self.model = model.signatures["serving_default"]
+            # Keep a reference to the full SavedModel so that the
+            # underlying variables are not garbage collected.
+            self._saved_model = model
+            self._concrete_fn = model.signatures["serving_default"]
 
         def call(self, inputs):
-            outputs = self.model(inputs=tf.convert_to_tensor(inputs))
+            outputs = self._concrete_fn(inputs=tf.convert_to_tensor(inputs))
             return outputs["feature_vector"]
 
     # Build the classification model architecture
