@@ -59,7 +59,7 @@ def preprocess_image(img: Image.Image) -> np.ndarray:
     return img_array
 
 
-st.title("🌿Invasive Plant Species Detection")
+st.title("Invasive Plant Species Detection")
 
 st.markdown(
     """
