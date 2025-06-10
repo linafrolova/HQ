@@ -60,14 +60,34 @@ def preprocess_image(img: Image.Image) -> np.ndarray:
 
 
 st.title("Invasive Plant Species Detection")
+
+st.markdown(
+    """
+    Welcome to the **Invasive Plant Species Detector**! 🌿
+    Upload a photo of a plant and this app will try to identify it.
+
+    It can recognise these eight invasive species:
+    - American skunk cabbage
+    - Chilean rhubarb
+    - Curly waterweed
+    - Floating pennywort
+    - Giant hogweed
+    - Himalayan balsam
+    - Nuttalls waterweed
+    - Parrots feather
+
+    *Use the uploader below to get started.*
+    """
+)
+
 model = load_model()
 
 uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
-    st.image(image, caption="Uploaded Image", use_container_width=True)
+    st.image(image, caption="Uploaded Image", width=300)
 
     img_array = preprocess_image(image)
     preds = model.predict(img_array)
     pred_idx = np.argmax(preds, axis=1)[0]
-    st.write(f"Prediction: {CLASS_NAMES[pred_idx]}")
+    st.markdown(f"## 🌱 Prediction: **{CLASS_NAMES[pred_idx]}**")
