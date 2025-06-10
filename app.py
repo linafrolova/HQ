@@ -59,11 +59,11 @@ def preprocess_image(img: Image.Image) -> np.ndarray:
     return img_array
 
 
-st.title("Invasive Plant Species Detection🌿")
+st.title("🌿Invasive Plant Species Detection")
 
 st.markdown(
     """
-    Welcome to the **Invasive Plant Species Detector**!
+    Welcome to the **Invasive Plant Species Detector**!🌿
     
     Upload a photo of a plant and this app will try to identify it.
 
