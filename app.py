@@ -13,7 +13,7 @@ CLASS_NAMES = [
     "Floating pennywort",
     "Giant hogweed",
     "Himalayan balsam",
-    "Non-invasive",
+    "Other Species",
     "Nuttalls waterweed",
     "Parrots feather",
 ]
@@ -64,6 +64,7 @@ st.title("Invasive Plant Species Detection")
 st.markdown(
     """
     Welcome to the **Invasive Plant Species Detector**! 🌿
+    
     Upload a photo of a plant and this app will try to identify it.
 
     It can recognise these eight invasive species:
